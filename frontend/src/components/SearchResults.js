@@ -22,6 +22,7 @@ const SearchResults = () => {
             setError('Error fetching search results');
         }
         setLoading(false);
+        setShouldFetch(false); // Reset shouldFetch after fetching results
     }, [query, page, limit, sort]);
 
     useEffect(() => {
