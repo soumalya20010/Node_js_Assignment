@@ -1,0 +1,22 @@
+.card {
+    background-color: rgb(224, 38, 38);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 16px 0;
+    padding: 16px;
+}
+
+.user-card {
+    background-color: #ee1e1e;
+    border-radius: 4px;
+    margin: 8px 0;
+    padding: 8px;
+}
+
+h3, h4 {
+    margin: 0 0 8px 0;
+}
+
+p {
+    margin: 4px 0;
+}
