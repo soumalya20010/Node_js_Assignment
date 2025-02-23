@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { search } from '../services/api';
 import './SearchResults.css'; // Import the CSS file for styling
 
@@ -6,12 +6,13 @@ const SearchResults = () => {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState({ users: [], companies: [] });
     const [page, setPage] = useState(1);
-    const [limit, setLimit] = useState(10);
+    const [limit] = useState(10); 
     const [sort, setSort] = useState('name');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [shouldFetch, setShouldFetch] = useState(false); // State to track when to fetch results
 
-    const fetchResults = async () => {
+    const fetchResults = useCallback(async () => {
         setLoading(true);
         setError('');
         try {
@@ -21,21 +22,22 @@ const SearchResults = () => {
             setError('Error fetching search results');
         }
         setLoading(false);
-    };
+    }, [query, page, limit, sort]);
 
     useEffect(() => {
-        if (query) {
+        if (shouldFetch) {
             fetchResults();
         }
-    }, [page, limit, sort]);
+    }, [shouldFetch, fetchResults]);
 
     const handlePageChange = (newPage) => {
         setPage(newPage);
+        setShouldFetch(true); // Trigger fetch when page changes
     };
 
     const handleSearch = () => {
         setPage(1); // Reset to the first page on new search
-        fetchResults();
+        setShouldFetch(true); // Trigger fetch when search button is clicked
     };
 
     return (
@@ -84,9 +86,9 @@ const SearchResults = () => {
                         <h2>Users</h2>
                         {results.users.map((user) => (
                             <div key={user._id} className="card">
-                                <h3>Name:{user.name}</h3>
-                                <p>Email:{user.email}</p>
-                                <p>Role:{user.role}</p>
+                                <h3>Name: {user.name}</h3>
+                                <p>Email: {user.email}</p>
+                                <p>Role: {user.role}</p>
                                 <p>Company: {user.company.name}</p>
                             </div>
                         ))}
