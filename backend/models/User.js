@@ -25,7 +25,6 @@ const UserSchema = new Schema({
     }
 });
 
-// Optional: Create a text index for full-text search on name and email
 UserSchema.index({ name: 'text', email: 'text' });
 
 export default mongoose.model('User', UserSchema);

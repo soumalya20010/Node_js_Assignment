@@ -1,0 +1,30 @@
+![Project Image](./project_img.png)
+
+## Installation
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/your-username/your-repository.git
+    ```
+
+2. Navigate to the project directory:
+    ```sh
+    cd your-repository
+    ```
+
+3. Install dependencies for the backend:
+    ```sh
+    cd backend
+    npm install
+    ```
+
+4. Install dependencies for the frontend:
+    ```sh
+    cd ../frontend
+    npm install
+
+5. create .env variable for backend =>MONGODB_URI and frontend => PORT , REACT_APP_API_URL    
+
+6. npm start from the root 
+
+

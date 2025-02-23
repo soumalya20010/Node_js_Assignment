@@ -75,9 +75,9 @@ export const search = async (req, res) => {
                     }
                 }
             },
-            { $sort: { [sort]: 1 } }, // Apply sorting
-            { $skip: options.skip }, // Apply pagination
-            { $limit: options.limit } // Limit the number of company results
+            { $sort: { [sort]: 1 } }, 
+            { $skip: options.skip }, 
+            { $limit: options.limit } 
         ]);
 
         const response = {};

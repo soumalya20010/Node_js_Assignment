@@ -19,7 +19,7 @@ const CompanySchema = new Schema({
   }
 });
 
-// Optional: Create a text index for full-text search on company name
+
 CompanySchema.index({ name: 'text' });
 
 export default mongoose.model('Company', CompanySchema);

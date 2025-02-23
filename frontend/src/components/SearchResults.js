@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { search } from '../services/api';
-import './SearchResults.css'; // Import the CSS file for styling
-
+import './SearchResults.css'; 
 const SearchResults = () => {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState({ users: [], companies: [] });
@@ -10,7 +9,7 @@ const SearchResults = () => {
     const [sort, setSort] = useState('name');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-    const [shouldFetch, setShouldFetch] = useState(false); // State to track when to fetch results
+    const [shouldFetch, setShouldFetch] = useState(false); 
 
     const fetchResults = useCallback(async () => {
         setLoading(true);
@@ -22,7 +21,7 @@ const SearchResults = () => {
             setError('Error fetching search results');
         }
         setLoading(false);
-        setShouldFetch(false); // Reset shouldFetch after fetching results
+        setShouldFetch(false); 
     }, [query, page, limit, sort]);
 
     useEffect(() => {
@@ -33,12 +32,12 @@ const SearchResults = () => {
 
     const handlePageChange = (newPage) => {
         setPage(newPage);
-        setShouldFetch(true); // Trigger fetch when page changes
+        setShouldFetch(true); 
     };
 
     const handleSearch = () => {
-        setPage(1); // Reset to the first page on new search
-        setShouldFetch(true); // Trigger fetch when search button is clicked
+        setPage(1); 
+        setShouldFetch(true); 
     };
 
     return (

@@ -53,7 +53,7 @@ export const getCompany = async (req, res) => {
             return res.status(404).json({ error: 'Company not found' });
         }
 
-        // Fetch associated users
+       
         const users = await User.find({ company: companyId }).lean();
 
         // Fetch sub-companies (companies that have this company as parent)
